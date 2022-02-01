@@ -39,9 +39,9 @@ export default function Home() {
             <div className=" flex flex-col items-center text-2xl font-semibold text-slate-700">
               Dry Waste 📦
               <div className=" relative mt-4 h-52 w-40 rounded border-4 border-emerald-300">
-                <p className="absolute left-14 text-slate-600">70%</p>
+                <p className="absolute left-14 text-slate-600">{dryDustbin}%</p>
                 <div
-                  style={{ height: '70%' }}
+                  style={{ height: `${dryDustbin}%` }}
                   className="absolute bottom-0 w-full bg-slate-500"
                 ></div>
               </div>
@@ -49,9 +49,9 @@ export default function Home() {
             <div className="flex flex-col items-center text-2xl font-semibold text-slate-700">
               Wet Waste 🥤
               <div className="relative mt-4 h-52 w-40 rounded border-4 border-emerald-300 ">
-                <p className="text-slate-604 absolute left-14">70%</p>
+                <p className="text-slate-604 absolute left-14">{wetDustbin}%</p>
                 <div
-                  style={{ height: '70%' }}
+                  style={{ height: `${wetDustbin}%` }}
                   className="absolute bottom-0 w-full bg-slate-500"
                 ></div>
               </div>
