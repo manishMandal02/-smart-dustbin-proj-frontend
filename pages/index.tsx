@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
-const SERVER = 'https://smart-dustbin-proj.heroku.app/webhooks/get'
+const SERVER = 'https://smart-dustbin-proj.herokuapp.com/webhooks/get'
 // const SERVER = 'http://localhost:8000/webhooks/get'
 
 export default function Home() {
