@@ -1,16 +1,21 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
-// const SERVER = 'https://smart-dustbin-iot.heroku.app/';
-const SERVER = 'http://localhost:8000/webhooks/get'
+const SERVER = 'https://smart-dustbin-proj.heroku.app/webhooks/get'
+// const SERVER = 'http://localhost:8000/webhooks/get'
 
 export default function Home() {
   const [isActive, setIsActive] = useState(false)
+  const [dryDustbin, setDryDustbin] = useState(0)
+  const [wetDustbin, setWetDustbin] = useState(0)
   useEffect(() => {
     const interval = setInterval(async () => {
       if (isActive) {
         const result = await fetch(SERVER).then((res) => res.json())
-        console.log(result)
+        if (result) {
+          setDryDustbin(result.dryDustbinPercentage)
+          setWetDustbin(result.wetDustbinPercentage)
+        }
       }
     }, 2000)
 
