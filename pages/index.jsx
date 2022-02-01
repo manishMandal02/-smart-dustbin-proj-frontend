@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-const SERVER = 'https://smart-dustbin-proj.herokuapp.com/webhooks/get'
+const SERVER = 'http://smart-dustbin-proj.herokuapp.com/webhooks/get'
 // const SERVER = 'http://localhost:8000/webhooks/get'
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(async () => {
       if (isActive) {
-        const result = await fetch(SERVER).then((res) => res.json())
+        const result = await axios(SERVER)
         if (result) {
           setDryDustbin(result.dryDustbinPercentage)
           setWetDustbin(result.wetDustbinPercentage)
@@ -37,7 +38,7 @@ export default function Home() {
         {isActive ? (
           <>
             <div className=" flex flex-col items-center text-2xl font-semibold text-slate-700">
-              Dry Waste 📦
+              Dry Waster 📦
               <div className=" relative mt-4 h-52 w-40 rounded border-4 border-emerald-300">
                 <p className="absolute left-14 text-slate-600">{dryDustbin}%</p>
                 <div
