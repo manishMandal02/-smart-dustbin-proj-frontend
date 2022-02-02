@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const SERVER = 'http://smart-dustbin-bms.herokuapp.com/webhooks/get'
+const SERVER = 'https://smart-dustbin-bms.herokuapp.com/webhooks/get'
 // const SERVER = 'http://localhost:8000/webhooks/get'
 
 export default function Home() {
