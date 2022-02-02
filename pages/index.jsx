@@ -44,14 +44,14 @@ export default function Home() {
         <title>Smart Dustbin </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="-mt-32 text-5xl font-bold tracking-wide text-slate-800">
+      <h1 className="-mt-32 text-4xl font-bold tracking-wide text-slate-800">
         Smart Dustbin 🚮
       </h1>
-      <div className="mt-24   flex w-3/5 items-center justify-around">
+      <div className="mt-24 flex w-3/5 items-center justify-around">
         {isActive ? (
           <>
-            <div className=" flex flex-col items-center text-2xl font-semibold text-slate-700">
-              Dry Waster 📦
+            <div className=" flex flex-col items-center text-xl font-semibold text-slate-700">
+              Dry Waste 📦
               <div className=" relative mt-4 h-52 w-40 rounded border-4 border-emerald-300">
                 <p className="absolute left-14 text-slate-600">{dryDustbin}%</p>
                 <div
@@ -60,7 +60,7 @@ export default function Home() {
                 ></div>
               </div>
             </div>
-            <div className="flex flex-col items-center text-2xl font-semibold text-slate-700">
+            <div className="ml-4 flex flex-col items-center text-xl font-semibold text-slate-700">
               Wet Waste 🥤
               <div className="relative mt-4 h-52 w-40 rounded border-4 border-emerald-300 ">
                 <p className="text-slate-604 absolute left-14">{wetDustbin}%</p>
