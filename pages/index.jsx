@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const SERVER = 'http://smart-dustbin-proj.herokuapp.com/webhooks/get'
+const SERVER = 'http://smart-dustbin-bms.herokuapp.com/webhooks/get'
 // const SERVER = 'http://localhost:8000/webhooks/get'
 
 export default function Home() {
@@ -12,13 +12,26 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(async () => {
       if (isActive) {
-        const result = await axios(SERVER)
+        const { data: result } = await axios(SERVER)
+        console.log(result)
         if (result) {
-          setDryDustbin(result.dryDustbinPercentage)
-          setWetDustbin(result.wetDustbinPercentage)
+          setWetDustbin(
+            (result.wetDustbinPercentage < 0
+              ? 0
+              : result.wetDustbinPercentage > 100
+              ? 100
+              : result.wetDustbinPercentage) || 0
+          )
+          setDryDustbin(
+            (result.dryDustbinPercentage < 0
+              ? 0
+              : result.dryDustbinPercentage > 100
+              ? 100
+              : result.dryDustbinPercentage) || 0
+          )
         }
       }
-    }, 2000)
+    }, 1500)
 
     return () => {
       clearInterval(interval)
@@ -43,7 +56,7 @@ export default function Home() {
                 <p className="absolute left-14 text-slate-600">{dryDustbin}%</p>
                 <div
                   style={{ height: `${dryDustbin}%` }}
-                  className="absolute bottom-0 w-full bg-slate-500"
+                  className="absolute bottom-0 w-full bg-teal-300 transition-all duration-1000"
                 ></div>
               </div>
             </div>
@@ -53,7 +66,7 @@ export default function Home() {
                 <p className="text-slate-604 absolute left-14">{wetDustbin}%</p>
                 <div
                   style={{ height: `${wetDustbin}%` }}
-                  className="absolute bottom-0 w-full bg-slate-500"
+                  className="absolute bottom-0 w-full bg-slate-500 transition-all duration-1000"
                 ></div>
               </div>
             </div>
